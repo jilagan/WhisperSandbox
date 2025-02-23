@@ -2,7 +2,30 @@
 
 This guide will help you set up the prerequisites for running `mic_whisper.py`, a Python script that records audio from your microphone and transcribes it using OpenAI's Whisper model.
 
-Tested with English, Tagalog, and Taglish.
+## Language Support
+
+Tested and optimized for:
+- English
+- Tagalog (Filipino)
+- Taglish (Code-switching between Tagalog and English)
+
+Language-specific usage:
+```bash
+# For pure Tagalog content
+python mic_whisper.py --language tl
+
+# For English content
+python mic_whisper.py --language en
+
+# For Taglish (mixed language content)
+python mic_whisper.py  # Let auto-detection handle it
+```
+
+Best practices for each language:
+- **Tagalog**: Use `--language tl` when the content is primarily Tagalog
+- **English**: Use `--language en` for Filipino-accented English
+- **Taglish**: Let the auto-detection work by omitting the language flag
+- For better accuracy with heavy accents, add the `--model large` flag
 
 ## System Requirements
 
@@ -80,6 +103,9 @@ python mic_whisper.py --language tl
 
 # Force CPU usage instead of M4
 python mic_whisper.py --cpu
+
+# Use larger model for better accuracy
+python mic_whisper.py --model large
 ```
 
 ## Troubleshooting
@@ -121,11 +147,9 @@ python -c "import sounddevice as sd; print(f'Input devices: {sd.query_devices()}
 
 ## Output Files
 
-The script generates two types of files:
+The script generates two types of files in the same directory:
 - Audio recordings: `recording_YYYYMMDD_HHMMSS.wav`
 - Transcriptions: `transcription_YYYYMMDD_HHMMSS.txt`
-
-These files are saved in the same directory as the script.
 
 ## Memory Management
 
@@ -142,3 +166,20 @@ If you encounter any issues:
 2. Verify microphone permissions
 3. Ensure virtual environment is activated
 4. Check system audio input settings
+
+## Tips for Best Results
+
+1. **Audio Quality**
+   - Use a good quality microphone
+   - Record in a quiet environment
+   - Speak clearly and at a consistent volume
+
+2. **Language Detection**
+   - For mixed language content, let auto-detection work
+   - For heavy accents, use the `--model large` flag
+   - If accuracy is poor, try explicitly setting the language
+
+3. **Performance**
+   - Use M4 acceleration when possible
+   - Clear cache between long sessions
+   - Monitor system resources during long transcriptions
