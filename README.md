@@ -2,6 +2,8 @@
 
 This guide will help you set up the prerequisites for running `mic_whisper.py`, a Python script that records audio from your microphone and transcribes it using OpenAI's Whisper model.
 
+Tested with English, Tagalog, and Taglish.
+
 ## System Requirements
 
 - MacBook with Apple Silicon (M1/M2/M3/M4)
